@@ -1,8 +1,10 @@
+import 'package:boarding_pass_manager/di/dependency_injector.dart';
 import 'package:flutter/material.dart';
 import 'config/theme/app_theme.dart';
-import 'presentation/screens/boarding_pass/home_screen.dart';
+import 'presentation/screens/boarding_passes/home_screen.dart';
 
-void main() {
+Future<void> main() async {
+  await initInjection();
   runApp(const MainApp());
 }
 
