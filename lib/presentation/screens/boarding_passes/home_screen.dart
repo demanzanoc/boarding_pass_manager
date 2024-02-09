@@ -1,4 +1,5 @@
 import 'package:boarding_pass_manager/presentation/controllers/shared/states/request_state.dart';
+import 'package:boarding_pass_manager/presentation/widgets/shared/inputs/custom_date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -104,6 +105,24 @@ class _BoardingPassForm extends GetView<BoardingPassFormController> {
                 validator: (value) => controller.validateCompletedField(value),
                 onSaved: (value) => controller.flight = value!,
                 enabled: state != RequestState.loading,
+              ),
+              spaceBetweenFields,
+              CustomDateTimePicker(
+                controller: controller.departureTimeController,
+                label: 'Fecha y hora de salida',
+                validator: (value) => controller.validateCompletedField(value),
+                onSaved: (value) => controller.departureTime = value!,
+                enabled: state != RequestState.loading,
+                icon: Icons.event,
+              ),
+              spaceBetweenFields,
+              CustomDateTimePicker(
+                controller: controller.arrivalTimeController,
+                label: 'Fecha y hora de llegada',
+                validator: (value) => controller.validateCompletedField(value),
+                onSaved: (value) => controller.arrivalTime = value!,
+                enabled: state != RequestState.loading,
+                icon: Icons.event,
               ),
               const SizedBox(height: 30),
               if (state == RequestState.loading)

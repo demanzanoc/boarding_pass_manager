@@ -19,7 +19,9 @@ class BoardingPassFormController extends GetxController {
       ageController,
       emailController,
       airportController,
-      flightController;
+      flightController,
+      departureTimeController,
+      arrivalTimeController;
 
   String name = '';
   String lastName = '';
@@ -27,6 +29,8 @@ class BoardingPassFormController extends GetxController {
   String email = '';
   String airport = '';
   String flight = '';
+  String departureTime = '';
+  String arrivalTime = '';
 
   Rx<RequestState> boardingPassInsertionState = RequestState.initial.obs;
 
@@ -38,6 +42,8 @@ class BoardingPassFormController extends GetxController {
     emailController = TextEditingController();
     airportController = TextEditingController();
     flightController = TextEditingController();
+    departureTimeController = TextEditingController();
+    arrivalTimeController = TextEditingController();
     super.onInit();
   }
 
@@ -49,6 +55,8 @@ class BoardingPassFormController extends GetxController {
     emailController.dispose();
     airportController.dispose();
     flightController.dispose();
+    departureTimeController.dispose();
+    arrivalTimeController.dispose();
     super.onClose();
   }
 
@@ -89,8 +97,8 @@ class BoardingPassFormController extends GetxController {
   BoardingPass _createBoardingPassEntity() => BoardingPass(
         age: int.tryParse(age)!,
         airport: airport,
-        arrivalTime: DateTime.now(),
-        departureTime: DateTime.now(),
+        arrivalTime: DateTime.parse(arrivalTime),
+        departureTime: DateTime.parse(departureTime),
         email: email,
         flight: flight,
         id: UuidUtil.getUuidV4(),
@@ -117,6 +125,7 @@ class BoardingPassFormController extends GetxController {
     emailController.clear();
     airportController.clear();
     flightController.clear();
-    ;
+    departureTimeController.clear();
+    arrivalTimeController.clear();
   }
 }
