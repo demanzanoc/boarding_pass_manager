@@ -15,9 +15,7 @@ class BoardingPassGraphqlDatasource implements BoardingPassesDatasource {
     final result =
         await graphQLClient.mutate(_createInsertBoardingPassMutation(json));
     if (result.hasException) {
-      throw Exception(
-        'Failed to insert boarding pass: ${result.exception.toString()}',
-      );
+      throw 'Error al insertar el pase de abordaje: ${result.exception.toString()}';
     }
   }
 

@@ -10,24 +10,26 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final TextCapitalization textCapitalization;
+  final bool? enabled;
 
-  const CustomTextFormField({
-    super.key,
-    this.label,
-    this.errorText,
-    this.controller,
-    this.validator,
-    this.onSaved,
-    this.keyboardType,
-    this.inputFormatters,
-    this.textCapitalization = TextCapitalization.none,
-  });
+  const CustomTextFormField(
+      {super.key,
+      this.label,
+      this.errorText,
+      this.controller,
+      this.validator,
+      this.onSaved,
+      this.keyboardType,
+      this.inputFormatters,
+      this.textCapitalization = TextCapitalization.none,
+      this.enabled});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final border = OutlineInputBorder(borderRadius: BorderRadius.circular(10));
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       validator: validator,
       onSaved: onSaved,
