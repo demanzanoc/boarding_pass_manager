@@ -4,9 +4,10 @@ import 'package:flutter/services.dart';
 class CustomTextFormField extends StatelessWidget {
   final String? label;
   final String? errorText;
-  final Function(String)? onChanged;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final TextInputType? inputType;
+  final void Function(String?)? onSaved;
+  final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final TextCapitalization textCapitalization;
 
@@ -14,9 +15,10 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.label,
     this.errorText,
-    this.onChanged,
+    this.controller,
     this.validator,
-    this.inputType,
+    this.onSaved,
+    this.keyboardType,
     this.inputFormatters,
     this.textCapitalization = TextCapitalization.none,
   });
@@ -26,9 +28,10 @@ class CustomTextFormField extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final border = OutlineInputBorder(borderRadius: BorderRadius.circular(10));
     return TextFormField(
-      onChanged: onChanged,
+      controller: controller,
       validator: validator,
-      keyboardType: inputType,
+      onSaved: onSaved,
+      keyboardType: keyboardType,
       inputFormatters: inputFormatters,
       textCapitalization: textCapitalization,
       decoration: InputDecoration(

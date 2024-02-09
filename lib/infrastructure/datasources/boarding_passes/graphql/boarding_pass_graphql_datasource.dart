@@ -1,5 +1,5 @@
 import 'package:boarding_pass_manager/domain/datasources/boarding_passes/boarding_passes_datasource.dart';
-import 'package:boarding_pass_manager/domain/entities/boarding_passes/boardig_pass.dart';
+import 'package:boarding_pass_manager/domain/entities/boarding_passes/boarding_pass.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../mappers/boarding_passes/boarding_pass_mapper.dart';
 

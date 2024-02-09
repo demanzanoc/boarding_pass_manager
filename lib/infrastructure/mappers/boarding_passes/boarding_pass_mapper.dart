@@ -1,4 +1,4 @@
-import 'package:boarding_pass_manager/domain/entities/boarding_passes/boardig_pass.dart';
+import 'package:boarding_pass_manager/domain/entities/boarding_passes/boarding_pass.dart';
 import '../../models/boardig_passes/graphql/boarding_pass_graphql_model.dart';
 
 class BoardingPassMapper {
