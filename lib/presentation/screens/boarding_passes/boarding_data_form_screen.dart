@@ -20,13 +20,19 @@ class BoardingDataFormScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: SingleChildScrollView(
           child: Column(
-            children: [
-              _BoardingPassDataForm(),
-              SizedBox(height: 20),
+            children: [Center(
+              child: SizedBox(
+                height: 120,
+                child: Image.asset('assets/boarding_pass_icon.png'),
+              ),
+            ),
+              const SizedBox(height: 20),
+              const _BoardingPassDataForm(),
+              const SizedBox(height: 20),
             ],
           ),
         ),

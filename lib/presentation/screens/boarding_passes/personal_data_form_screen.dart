@@ -11,15 +11,22 @@ class PersonalDataFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(),
+    return Scaffold(
+      appBar: const CustomAppBar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _PersonalDataForm(),
-              SizedBox(height: 20),
+              Center(
+                child: SizedBox(
+                  height: 120,
+                  child: Image.asset('assets/personal_data_icon.png'),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const _PersonalDataForm(),
+              const SizedBox(height: 20),
             ],
           ),
         ),
