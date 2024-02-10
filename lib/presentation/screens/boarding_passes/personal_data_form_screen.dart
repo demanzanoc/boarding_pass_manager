@@ -34,7 +34,7 @@ class _PersonalDataForm extends GetView<PersonalDataFormController> {
   Widget build(BuildContext context) {
     const spaceBetweenFields = SizedBox(height: 10);
     return Form(
-      key: controller.personalDataFormKey,
+      key: controller.getPersonalDataFormKey,
       child: Column(
         children: [
           CustomTextFormField(

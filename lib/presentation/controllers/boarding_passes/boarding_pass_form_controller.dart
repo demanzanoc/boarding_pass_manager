@@ -4,7 +4,6 @@ import 'package:boarding_pass_manager/domain/utils/uuid_util.dart';
 import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/personal_data_form_controller.dart';
 import 'package:boarding_pass_manager/presentation/controllers/shared/states/request_state.dart';
 import 'package:boarding_pass_manager/presentation/controllers/shared/validators/input_validator.dart';
-import 'package:boarding_pass_manager/presentation/screens/boarding_passes/personal_data_form_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,8 +14,10 @@ class BoardingPassFormController extends GetxController {
 
   BoardingPassFormController({required this.boardingPassRepository});
 
-  GlobalKey<FormState> boardingPassFormKey = GlobalKey<FormState>();
-  PersonalDataFormController personalDataFormController =
+  final GlobalKey<FormState> _boardingPassFormKey = GlobalKey<FormState>();
+
+  GlobalKey<FormState> get getBoardingPassFormKey => _boardingPassFormKey;
+  final PersonalDataFormController _personalDataFormController =
       Get.find<PersonalDataFormController>();
 
   late TextEditingController airportController,
@@ -53,9 +54,9 @@ class BoardingPassFormController extends GetxController {
       InputValidator.validateCompletedField(value);
 
   void checkForm() {
-    final isValid = boardingPassFormKey.currentState!.validate();
+    final isValid = _boardingPassFormKey.currentState!.validate();
     if (!isValid) return;
-    boardingPassFormKey.currentState!.save();
+    _boardingPassFormKey.currentState!.save();
     _setBoardingPass();
   }
 
@@ -71,15 +72,15 @@ class BoardingPassFormController extends GetxController {
   }
 
   BoardingPass _createBoardingPassEntity() => BoardingPass(
-        age: int.tryParse(personalDataFormController.age)!,
+        age: int.tryParse(_personalDataFormController.age)!,
         airport: airport,
         arrivalTime: DateTime.parse(arrivalTime),
         departureTime: DateTime.parse(departureTime),
-        email: personalDataFormController.email,
+        email: _personalDataFormController.email,
         flight: flight,
         id: UuidUtil.getUuidV4(),
-        lastName: personalDataFormController.lastName,
-        name: personalDataFormController.name,
+        lastName: _personalDataFormController.lastName,
+        name: _personalDataFormController.name,
       );
 
   void _onSuccessRequest() {
@@ -87,7 +88,8 @@ class BoardingPassFormController extends GetxController {
     CustomSnackBar.success('Se guardaron los datos exitosamente')
         .showSnackBar();
     _clearForm();
-    Get.off(const PersonalDataFormScreen());
+    final context = Get.context;
+    if (context != null) Navigator.pop(context);
   }
 
   void _onErrorRequest(String exception) {
@@ -96,7 +98,7 @@ class BoardingPassFormController extends GetxController {
   }
 
   void _clearForm() {
-    personalDataFormController.clearForm();
+    _personalDataFormController.clearForm();
     airportController.clear();
     flightController.clear();
     departureTimeController.clear();

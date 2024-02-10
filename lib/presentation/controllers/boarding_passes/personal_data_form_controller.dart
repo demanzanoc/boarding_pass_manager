@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PersonalDataFormController extends GetxController {
-  GlobalKey<FormState> personalDataFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _personalDataFormKey = GlobalKey<FormState>();
 
-  PersonalDataFormController();
+  GlobalKey<FormState> get getPersonalDataFormKey => _personalDataFormKey;
 
   late TextEditingController nameController,
       lastNameController,
@@ -33,6 +33,7 @@ class PersonalDataFormController extends GetxController {
     lastNameController.dispose();
     ageController.dispose();
     emailController.dispose();
+    _personalDataFormKey.currentState!.reset();
     super.onClose();
   }
 
@@ -43,10 +44,10 @@ class PersonalDataFormController extends GetxController {
       InputValidator.validateCompletedField(value);
 
   void checkForm() {
-    final isValid = personalDataFormKey.currentState!.validate();
+    final isValid = _personalDataFormKey.currentState!.validate();
     if (!isValid) return;
-    personalDataFormKey.currentState!.save();
-    Get.to(const BoardingDataFormScreen());
+    _personalDataFormKey.currentState!.save();
+    Get.to(() => const BoardingDataFormScreen());
   }
 
   void clearForm() {

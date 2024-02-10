@@ -38,7 +38,7 @@ class _BoardingPassDataForm extends GetView<BoardingPassFormController> {
       const spaceBetweenFields = SizedBox(height: 10);
       final state = controller.boardingPassInsertionState.value;
       return Form(
-        key: controller.boardingPassFormKey,
+        key: controller.getBoardingPassFormKey,
         child: Column(
           children: [
             CustomTextFormField(
