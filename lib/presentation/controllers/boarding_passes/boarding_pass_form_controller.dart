@@ -3,6 +3,7 @@ import 'package:boarding_pass_manager/domain/repositories/boarding_passes/boardi
 import 'package:boarding_pass_manager/domain/utils/uuid_util.dart';
 import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/personal_data_form_controller.dart';
 import 'package:boarding_pass_manager/presentation/controllers/shared/states/request_state.dart';
+import 'package:boarding_pass_manager/presentation/controllers/shared/validators/input_validator.dart';
 import 'package:boarding_pass_manager/presentation/screens/boarding_passes/personal_data_form_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,13 +49,8 @@ class BoardingPassFormController extends GetxController {
     super.onClose();
   }
 
-  String? validateCompletedField(String? value) {
-    if (value == null || value.isEmpty || value.trim().isEmpty) {
-      return 'Este dato es requerido';
-    } else {
-      return null;
-    }
-  }
+  String? validateCompletedField(String? value) =>
+      InputValidator.validateCompletedField(value);
 
   void checkForm() {
     final isValid = boardingPassFormKey.currentState!.validate();
