@@ -13,9 +13,14 @@ class BoardingDataFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(),
-      body: Padding(
+    return Scaffold(
+      appBar: CustomAppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: SingleChildScrollView(
           child: Column(

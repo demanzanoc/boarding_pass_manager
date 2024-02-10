@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'custom_app_bar_clipper.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final Widget? leading;
+  const CustomAppBar({super.key, this.leading});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
+      leading: leading,
     );
   }
 
