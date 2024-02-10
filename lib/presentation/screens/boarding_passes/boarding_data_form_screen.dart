@@ -1,3 +1,4 @@
+import 'package:boarding_pass_manager/presentation/constants/assets.dart';
 import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/boarding_pass_form_controller.dart';
 import 'package:boarding_pass_manager/presentation/widgets/shared/app_bar/custom_app_bar.dart';
 import 'package:boarding_pass_manager/presentation/widgets/shared/buttons/custom_filled_button.dart';
@@ -27,7 +28,7 @@ class BoardingDataFormScreen extends StatelessWidget {
             children: [Center(
               child: SizedBox(
                 height: 120,
-                child: Image.asset('assets/boarding_pass_icon.png'),
+                child: Image.asset(Assets.boardingPassImg),
               ),
             ),
               const SizedBox(height: 20),

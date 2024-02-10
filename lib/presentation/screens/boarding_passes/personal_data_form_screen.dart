@@ -3,6 +3,7 @@ import 'package:boarding_pass_manager/presentation/widgets/shared/app_bar/custom
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import '../../constants/assets.dart';
 import '../../widgets/shared/buttons/custom_filled_button.dart';
 import '../../widgets/shared/inputs/custom_text_form_field.dart';
 
@@ -21,7 +22,7 @@ class PersonalDataFormScreen extends StatelessWidget {
               Center(
                 child: SizedBox(
                   height: 120,
-                  child: Image.asset('assets/personal_data_icon.png'),
+                  child: Image.asset(Assets.personalDataImg),
                 ),
               ),
               const SizedBox(height: 20),
