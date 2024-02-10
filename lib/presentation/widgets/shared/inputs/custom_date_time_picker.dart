@@ -33,7 +33,7 @@ class CustomDateTimePicker extends StatelessWidget {
       dateMask: 'd MMM, yyyy - HH:mm',
       enabled: enabled,
       initialValue: initialValue,
-      firstDate: DateTime(2000),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2100),
       icon: Icon(icon),
       dateLabelText: 'Fecha',

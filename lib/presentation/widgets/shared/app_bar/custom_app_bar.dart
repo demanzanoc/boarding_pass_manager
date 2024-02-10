@@ -1,7 +1,6 @@
 import 'package:boarding_pass_manager/config/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'custom_app_bar_clipper.dart';
+import 'custom_clipper_app_bar.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
@@ -13,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       flexibleSpace: ClipPath(
-        clipper: CustomAppBarClipper(),
+        clipper: CustomClipperAppBar(),
         child: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -28,10 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: const Center(
             child: Text(
-              'Boarding Manager 🛫',
+              'Airticket 🛫',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 26,
+                fontSize: 30,
                 fontWeight: FontWeight.w400,
               ),
             ),

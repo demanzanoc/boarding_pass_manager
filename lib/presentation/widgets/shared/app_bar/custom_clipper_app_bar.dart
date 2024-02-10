@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class CustomAppBarClipper extends CustomClipper<Path> {
+class CustomClipperAppBar extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     double height = size.height;
