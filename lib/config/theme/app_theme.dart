@@ -5,4 +5,7 @@ class AppTheme {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       );
+
+  static ColorScheme getColorScheme(BuildContext context) =>
+      Theme.of(context).colorScheme;
 }

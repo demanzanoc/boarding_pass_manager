@@ -1,3 +1,4 @@
+import 'package:boarding_pass_manager/config/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +28,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = AppTheme.getColorScheme(context);
     final border = OutlineInputBorder(borderRadius: BorderRadius.circular(10));
     return TextFormField(
       enabled: enabled,

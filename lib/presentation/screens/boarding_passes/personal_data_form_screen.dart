@@ -1,8 +1,9 @@
 import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/personal_data_form_controller.dart';
-import 'package:boarding_pass_manager/presentation/widgets/shared/custom_app_bar.dart';
+import 'package:boarding_pass_manager/presentation/widgets/shared/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import '../../widgets/shared/buttons/custom_filled_button.dart';
 import '../../widgets/shared/inputs/custom_text_form_field.dart';
 
 class PersonalDataFormScreen extends StatelessWidget {
@@ -37,6 +38,7 @@ class _PersonalDataForm extends GetView<PersonalDataFormController> {
       key: controller.getPersonalDataFormKey,
       child: Column(
         children: [
+          spaceBetweenFields,
           CustomTextFormField(
             label: 'Nombre',
             controller: controller.nameController,
@@ -74,20 +76,10 @@ class _PersonalDataForm extends GetView<PersonalDataFormController> {
             onSaved: (value) => controller.email = value!,
           ),
           const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18),
-            child: FilledButton.tonalIcon(
-              onPressed: () => controller.checkForm(),
-              icon: const Icon(Icons.arrow_forward_ios),
-              label: const Text('Continuar'),
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 12,
-                ),
-                textStyle: const TextStyle(fontSize: 16),
-              ),
-            ),
+          CustomFilledButton(
+            onPressed: () => controller.checkForm(),
+            iconData: Icons.arrow_forward_ios,
+            label: 'Continuar',
           ),
         ],
       ),

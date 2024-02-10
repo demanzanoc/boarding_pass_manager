@@ -1,3 +1,4 @@
+import 'package:boarding_pass_manager/config/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
@@ -25,7 +26,7 @@ class CustomDateTimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = AppTheme.getColorScheme(context);
     final border = OutlineInputBorder(borderRadius: BorderRadius.circular(10));
     return DateTimePicker(
       type: DateTimePickerType.dateTime,

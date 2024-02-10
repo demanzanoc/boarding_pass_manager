@@ -1,5 +1,6 @@
 import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/boarding_pass_form_controller.dart';
-import 'package:boarding_pass_manager/presentation/widgets/shared/custom_app_bar.dart';
+import 'package:boarding_pass_manager/presentation/widgets/shared/app_bar/custom_app_bar.dart';
+import 'package:boarding_pass_manager/presentation/widgets/shared/buttons/custom_filled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,7 @@ class _BoardingPassDataForm extends GetView<BoardingPassFormController> {
         key: controller.getBoardingPassFormKey,
         child: Column(
           children: [
+            spaceBetweenFields,
             CustomTextFormField(
               label: 'Aeropuerto',
               controller: controller.airportController,
@@ -82,20 +84,10 @@ class _BoardingPassDataForm extends GetView<BoardingPassFormController> {
             if (state == RequestState.loading)
               const CircularProgressIndicator()
             else
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 18),
-                child: FilledButton.tonalIcon(
-                  onPressed: () => controller.checkForm(),
-                  icon: const Icon(Icons.save),
-                  label: const Text('Registrar pase de abordaje'),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 18,
-                      vertical: 12,
-                    ),
-                    textStyle: const TextStyle(fontSize: 16),
-                  ),
-                ),
+              CustomFilledButton(
+                onPressed: () => controller.checkForm(),
+                iconData: Icons.save_rounded,
+                label: 'Registrar ticket',
               )
           ],
         ),
