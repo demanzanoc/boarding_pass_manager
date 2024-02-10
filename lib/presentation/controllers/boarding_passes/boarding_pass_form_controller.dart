@@ -1,7 +1,9 @@
 import 'package:boarding_pass_manager/domain/entities/boarding_passes/boarding_pass.dart';
 import 'package:boarding_pass_manager/domain/repositories/boarding_passes/boarding_passes_repository.dart';
 import 'package:boarding_pass_manager/domain/utils/uuid_util.dart';
+import 'package:boarding_pass_manager/presentation/controllers/boarding_passes/personal_data_form_controller.dart';
 import 'package:boarding_pass_manager/presentation/controllers/shared/states/request_state.dart';
+import 'package:boarding_pass_manager/presentation/screens/boarding_passes/personal_data_form_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,20 +15,14 @@ class BoardingPassFormController extends GetxController {
   BoardingPassFormController({required this.boardingPassRepository});
 
   GlobalKey<FormState> boardingPassFormKey = GlobalKey<FormState>();
+  PersonalDataFormController personalDataFormController =
+      Get.find<PersonalDataFormController>();
 
-  late TextEditingController nameController,
-      lastNameController,
-      ageController,
-      emailController,
-      airportController,
+  late TextEditingController airportController,
       flightController,
       departureTimeController,
       arrivalTimeController;
 
-  String name = '';
-  String lastName = '';
-  String age = '';
-  String email = '';
   String airport = '';
   String flight = '';
   String departureTime = '';
@@ -36,10 +32,6 @@ class BoardingPassFormController extends GetxController {
 
   @override
   void onInit() {
-    nameController = TextEditingController();
-    lastNameController = TextEditingController();
-    ageController = TextEditingController();
-    emailController = TextEditingController();
     airportController = TextEditingController();
     flightController = TextEditingController();
     departureTimeController = TextEditingController();
@@ -49,23 +41,11 @@ class BoardingPassFormController extends GetxController {
 
   @override
   void onClose() {
-    nameController.dispose();
-    lastNameController.dispose();
-    ageController.dispose();
-    emailController.dispose();
     airportController.dispose();
     flightController.dispose();
     departureTimeController.dispose();
     arrivalTimeController.dispose();
     super.onClose();
-  }
-
-  String? validateEmailFormat(String? value) {
-    if (!GetUtils.isEmail(value!)) {
-      return 'No es un correo válido';
-    } else {
-      return null;
-    }
   }
 
   String? validateCompletedField(String? value) {
@@ -95,15 +75,15 @@ class BoardingPassFormController extends GetxController {
   }
 
   BoardingPass _createBoardingPassEntity() => BoardingPass(
-        age: int.tryParse(age)!,
+        age: int.tryParse(personalDataFormController.age)!,
         airport: airport,
         arrivalTime: DateTime.parse(arrivalTime),
         departureTime: DateTime.parse(departureTime),
-        email: email,
+        email: personalDataFormController.email,
         flight: flight,
         id: UuidUtil.getUuidV4(),
-        lastName: lastName,
-        name: name,
+        lastName: personalDataFormController.lastName,
+        name: personalDataFormController.name,
       );
 
   void _onSuccessRequest() {
@@ -111,6 +91,7 @@ class BoardingPassFormController extends GetxController {
     CustomSnackBar.success('Se guardaron los datos exitosamente')
         .showSnackBar();
     _clearForm();
+    Get.off(const PersonalDataFormScreen());
   }
 
   void _onErrorRequest(String exception) {
@@ -119,10 +100,7 @@ class BoardingPassFormController extends GetxController {
   }
 
   void _clearForm() {
-    nameController.clear();
-    lastNameController.clear();
-    ageController.clear();
-    emailController.clear();
+    personalDataFormController.clearForm();
     airportController.clear();
     flightController.clear();
     departureTimeController.clear();

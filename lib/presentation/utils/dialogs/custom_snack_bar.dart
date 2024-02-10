@@ -41,6 +41,7 @@ class CustomSnackBar {
       snackPosition: SnackPosition.BOTTOM,
       borderRadius: 10,
       margin: const EdgeInsets.all(10),
+      duration: const Duration(seconds: 5),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       isDismissible: true,
       forwardAnimationCurve: Curves.easeOutBack,

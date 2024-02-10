@@ -1,8 +1,8 @@
 import 'package:boarding_pass_manager/di/dependency_injector.dart';
+import 'package:boarding_pass_manager/presentation/screens/boarding_passes/personal_data_form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'config/theme/app_theme.dart';
-import 'presentation/screens/boarding_passes/home_screen.dart';
 
 void main() async {
   await initInjection();
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme().getTheme(),
-      home: const HomeScreen(),
+      home: const PersonalDataFormScreen(),
     );
   }
 }
